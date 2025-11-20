@@ -253,7 +253,7 @@ El script `insert_datos_prueba.sql` incluye:
 
 ## 📽️ Video
 
-- **[You Tube]()**
+- **[You Tube](https://www.youtube.com/watch?v=hwdd5MBbjsA)**
 
 ## 📄 Informe
 
