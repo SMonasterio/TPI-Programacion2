@@ -22,11 +22,9 @@ public class EscrituraNotarial extends Base {
     private String folio;
     private String observaciones;
 
-    // Constructor vacío
     public EscrituraNotarial() {
     }
 
-    // Constructor completo
     public EscrituraNotarial(Long id, Boolean eliminado, String nroEscritura, LocalDate fecha,
             String notaria, String tomo, String folio, String observaciones) {
         this.id = id;
@@ -39,7 +37,6 @@ public class EscrituraNotarial extends Base {
         this.observaciones = observaciones;
     }
 
-    // Getters y setters
     public Long getId() {
         return id;
     }

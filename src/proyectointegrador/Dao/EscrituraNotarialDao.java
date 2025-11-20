@@ -19,12 +19,6 @@ import proyectointegrador.Entities.EscrituraNotarial;
 
 public class EscrituraNotarialDao implements GenericDao<EscrituraNotarial> {
 
-    /**
-     *
-     * @param e
-     * @param conn
-     * @throws Exception
-     */
     @Override
     public void crear(EscrituraNotarial e, Connection conn) throws Exception {
         String sql = """

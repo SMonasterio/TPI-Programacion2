@@ -36,8 +36,7 @@ public class PropiedadDao implements GenericDao<Propiedad> {
             ps.setBigDecimal(4, p.getSuperficieM2());
             ps.setString(5, p.getDestino() != null ? p.getDestino().name() : null);
             ps.setInt(6, p.getAntiguedad());
-            
-            // Si tiene escritura asociada, usar su ID, sino null
+
             if (p.getEscrituraNotarial() != null && p.getEscrituraNotarial().getId() != null) {
                 ps.setLong(7, p.getEscrituraNotarial().getId());
             } else {
@@ -115,8 +114,7 @@ public class PropiedadDao implements GenericDao<Propiedad> {
             ps.setBigDecimal(3, p.getSuperficieM2());
             ps.setString(4, p.getDestino() != null ? p.getDestino().name() : null);
             ps.setInt(5, p.getAntiguedad());
-            
-            // Si tiene escritura asociada, usar su ID, sino null
+
             if (p.getEscrituraNotarial() != null && p.getEscrituraNotarial().getId() != null) {
                 ps.setLong(6, p.getEscrituraNotarial().getId());
             } else {
@@ -139,9 +137,6 @@ public class PropiedadDao implements GenericDao<Propiedad> {
         }
     }
 
-    /**
-     * Busca una propiedad por su padrón catastral
-     */
     public Propiedad buscarPorPadronCatastral(String padron, Connection conn) throws Exception {
         String sql = """
             SELECT p.*, e.id as escritura_id, e.eliminado as escritura_eliminado,
@@ -180,7 +175,7 @@ public class PropiedadDao implements GenericDao<Propiedad> {
         
         p.setAntiguedad(rs.getInt("antiguedad"));
 
-        // Mapear escritura notarial si existe
+
         Long escrituraId = rs.getLong("escritura_id");
         if (!rs.wasNull() && escrituraId != null) {
             EscrituraNotarial e = new EscrituraNotarial();

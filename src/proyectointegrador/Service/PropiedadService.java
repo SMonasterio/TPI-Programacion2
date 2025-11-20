@@ -8,10 +8,6 @@ import proyectointegrador.Dao.PropiedadDao;
 import proyectointegrador.Entities.EscrituraNotarial;
 import proyectointegrador.Entities.Propiedad;
 
-/**
- * Servicio para operaciones de negocio de Propiedad
- * Maneja transacciones y validaciones
- */
 public class PropiedadService implements GenericService<Propiedad> {
 
     private final PropiedadDao propiedadDao = new PropiedadDao();
@@ -20,25 +16,22 @@ public class PropiedadService implements GenericService<Propiedad> {
     @Override
     public Propiedad insertar(Propiedad propiedad) throws Exception {
         validarPropiedad(propiedad);
-        
+
         Connection conn = null;
         try {
             conn = DatabaseConnection.getConnection();
             conn.setAutoCommit(false);
 
-            // Si tiene escritura asociada, primero crear la escritura
             if (propiedad.getEscrituraNotarial() != null) {
                 EscrituraNotarial escritura = propiedad.getEscrituraNotarial();
                 validarEscritura(escritura);
-                
-                // Si la escritura no tiene ID, crearla
+
                 if (escritura.getId() == null) {
                     escritura.setEliminado(false);
                     escrituraDao.crear(escritura, conn);
                 }
             }
 
-            // Crear la propiedad
             propiedad.setEliminado(false);
             propiedadDao.crear(propiedad, conn);
 
@@ -61,7 +54,7 @@ public class PropiedadService implements GenericService<Propiedad> {
     @Override
     public void actualizar(Propiedad propiedad) throws Exception {
         validarPropiedad(propiedad);
-        
+
         if (propiedad.getId() == null) {
             throw new IllegalArgumentException("El ID de la propiedad es requerido para actualizar");
         }
@@ -71,28 +64,23 @@ public class PropiedadService implements GenericService<Propiedad> {
             conn = DatabaseConnection.getConnection();
             conn.setAutoCommit(false);
 
-            // Verificar que la propiedad existe
             Propiedad existente = propiedadDao.leer(propiedad.getId(), conn);
             if (existente == null) {
                 throw new IllegalArgumentException("No se encontró la propiedad con ID: " + propiedad.getId());
             }
 
-            // Si se está actualizando la escritura asociada
             if (propiedad.getEscrituraNotarial() != null) {
                 EscrituraNotarial escritura = propiedad.getEscrituraNotarial();
                 validarEscritura(escritura);
-                
-                // Si la escritura no tiene ID, crearla
+
                 if (escritura.getId() == null) {
                     escritura.setEliminado(false);
                     escrituraDao.crear(escritura, conn);
                 } else {
-                    // Actualizar la escritura existente
                     escrituraDao.actualizar(escritura, conn);
                 }
             }
 
-            // Actualizar la propiedad
             propiedadDao.actualizar(propiedad, conn);
 
             conn.commit();
@@ -161,9 +149,6 @@ public class PropiedadService implements GenericService<Propiedad> {
         }
     }
 
-    /**
-     * Busca una propiedad por su padrón catastral
-     */
     public Propiedad buscarPorPadronCatastral(String padron) throws Exception {
         if (padron == null || padron.trim().isEmpty()) {
             throw new IllegalArgumentException("El padrón catastral es requerido");
@@ -174,9 +159,6 @@ public class PropiedadService implements GenericService<Propiedad> {
         }
     }
 
-    /**
-     * Valida los datos de una propiedad
-     */
     private void validarPropiedad(Propiedad propiedad) {
         if (propiedad == null) {
             throw new IllegalArgumentException("La propiedad no puede ser nula");
@@ -216,4 +198,3 @@ public class PropiedadService implements GenericService<Propiedad> {
         }
     }
 }
-

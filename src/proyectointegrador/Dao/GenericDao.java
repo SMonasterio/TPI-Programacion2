@@ -21,5 +21,5 @@ public interface GenericDao<T> {
 
     void actualizar(T entidad, Connection conn) throws Exception;
 
-    void eliminar(Long id, Connection conn) throws Exception; // baja lógica
+    void eliminar(Long id, Connection conn) throws Exception;
 }

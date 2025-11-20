@@ -21,14 +21,11 @@ public class Propiedad extends Base {
     private DestinoEnum destino;
     private Integer antiguedad;
 
-    // Relación 1 → 1 unidireccional
     private EscrituraNotarial escrituraNotarial;
 
-    // Constructor vacío
     public Propiedad() {
     }
 
-    // Constructor completo
     public Propiedad(Long id, Boolean eliminado, String padronCatastral, String direccion,
             BigDecimal superficieM2, DestinoEnum destino, Integer antiguedad,
             EscrituraNotarial escrituraNotarial) {
@@ -42,7 +39,6 @@ public class Propiedad extends Base {
         this.escrituraNotarial = escrituraNotarial;
     }
 
-    // Getters y setters
     public Long getId() {
         return id;
     }

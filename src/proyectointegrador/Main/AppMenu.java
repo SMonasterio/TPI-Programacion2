@@ -12,9 +12,6 @@ import proyectointegrador.Entities.Propiedad;
 import proyectointegrador.Service.EscrituraNotarialService;
 import proyectointegrador.Service.PropiedadService;
 
-/**
- * Menú de consola para operaciones CRUD
- */
 public class AppMenu {
 
     private final Scanner scanner = new Scanner(System.in);

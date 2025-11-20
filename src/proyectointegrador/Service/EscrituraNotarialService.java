@@ -6,10 +6,6 @@ import proyectointegrador.Config.DatabaseConnection;
 import proyectointegrador.Dao.EscrituraNotarialDao;
 import proyectointegrador.Entities.EscrituraNotarial;
 
-/**
- * Servicio para operaciones de negocio de EscrituraNotarial
- * Maneja transacciones y validaciones
- */
 public class EscrituraNotarialService implements GenericService<EscrituraNotarial> {
 
     private final EscrituraNotarialDao escrituraDao = new EscrituraNotarialDao();
@@ -55,7 +51,6 @@ public class EscrituraNotarialService implements GenericService<EscrituraNotaria
             conn = DatabaseConnection.getConnection();
             conn.setAutoCommit(false);
 
-            // Verificar que la escritura existe
             EscrituraNotarial existente = escrituraDao.leer(escritura.getId(), conn);
             if (existente == null) {
                 throw new IllegalArgumentException("No se encontró la escritura con ID: " + escritura.getId());
@@ -129,9 +124,7 @@ public class EscrituraNotarialService implements GenericService<EscrituraNotaria
         }
     }
 
-    /**
-     * Busca una escritura por su número
-     */
+
     public EscrituraNotarial buscarPorNroEscritura(String nroEscritura) throws Exception {
         if (nroEscritura == null || nroEscritura.trim().isEmpty()) {
             throw new IllegalArgumentException("El número de escritura es requerido");
@@ -142,9 +135,6 @@ public class EscrituraNotarialService implements GenericService<EscrituraNotaria
         }
     }
 
-    /**
-     * Valida los datos de una escritura notarial
-     */
     private void validarEscritura(EscrituraNotarial escritura) {
         if (escritura == null) {
             throw new IllegalArgumentException("La escritura notarial no puede ser nula");
