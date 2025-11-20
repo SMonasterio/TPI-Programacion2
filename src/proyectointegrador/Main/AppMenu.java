@@ -49,12 +49,12 @@ public class AppMenu {
 
     private void mostrarMenuPrincipal() {
         System.out.println("\n" + "=".repeat(50));
-        System.out.println("        SISTEMA DE GESTIÓN DE PROPIEDADES");
+        System.out.println("        SISTEMA DE GESTION DE PROPIEDADES");
         System.out.println("=".repeat(50));
         System.out.println("1. Gestionar Propiedades");
         System.out.println("2. Gestionar Escrituras Notariales");
         System.out.println("S. Salir");
-        System.out.print("\nSeleccione una opción: ");
+        System.out.print("\nSeleccione una opcion: ");
     }
 
     private void menuPropiedad() {
@@ -62,16 +62,16 @@ public class AppMenu {
 
         while (continuar) {
             System.out.println("\n" + "-".repeat(50));
-            System.out.println("        MENÚ DE PROPIEDADES");
+            System.out.println("        MENU DE PROPIEDADES");
             System.out.println("-".repeat(50));
             System.out.println("1. Crear Propiedad");
             System.out.println("2. Buscar Propiedad por ID");
-            System.out.println("3. Buscar Propiedad por Padrón Catastral");
+            System.out.println("3. Buscar Propiedad por Padron Catastral");
             System.out.println("4. Listar Todas las Propiedades");
             System.out.println("5. Actualizar Propiedad");
-            System.out.println("6. Eliminar Propiedad (lógico)");
-            System.out.println("V. Volver al menú principal");
-            System.out.print("\nSeleccione una opción: ");
+            System.out.println("6. Eliminar Propiedad");
+            System.out.println("V. Volver al menu principal");
+            System.out.print("\nSeleccione una opcion: ");
 
             String opcion = scanner.nextLine().trim().toUpperCase();
 
@@ -84,7 +84,7 @@ public class AppMenu {
                     case "5" -> actualizarPropiedad();
                     case "6" -> eliminarPropiedad();
                     case "V" -> continuar = false;
-                    default -> System.out.println("\n❌ Opción inválida.");
+                    default -> System.out.println("\n❌ Opcion invalida.");
                 }
             } catch (Exception e) {
                 System.out.println("\n❌ Error: " + e.getMessage());
@@ -97,16 +97,16 @@ public class AppMenu {
 
         while (continuar) {
             System.out.println("\n" + "-".repeat(50));
-            System.out.println("        MENÚ DE ESCRITURAS NOTARIALES");
+            System.out.println("        MENU DE ESCRITURAS NOTARIALES");
             System.out.println("-".repeat(50));
             System.out.println("1. Crear Escritura Notarial");
             System.out.println("2. Buscar Escritura por ID");
-            System.out.println("3. Buscar Escritura por Número");
+            System.out.println("3. Buscar Escritura por Numero");
             System.out.println("4. Listar Todas las Escrituras");
             System.out.println("5. Actualizar Escritura");
-            System.out.println("6. Eliminar Escritura (lógico)");
-            System.out.println("V. Volver al menú principal");
-            System.out.print("\nSeleccione una opción: ");
+            System.out.println("6. Eliminar Escritura");
+            System.out.println("V. Volver al menu principal");
+            System.out.print("\nSeleccione una opcion: ");
 
             String opcion = scanner.nextLine().trim().toUpperCase();
 
@@ -119,7 +119,7 @@ public class AppMenu {
                     case "5" -> actualizarEscritura();
                     case "6" -> eliminarEscritura();
                     case "V" -> continuar = false;
-                    default -> System.out.println("\n❌ Opción inválida.");
+                    default -> System.out.println("\n❌ Opcion invalida.");
                 }
             } catch (Exception e) {
                 System.out.println("\n❌ Error: " + e.getMessage());
